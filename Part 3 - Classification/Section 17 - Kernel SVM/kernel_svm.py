@@ -1,3 +1,6 @@
+## Importing the libraries
+
+
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -36,11 +39,11 @@ print(X_train)
 
 print(X_test)
 
-## Training the Logistic Regression model on the Training set
+## Training the Kernel SVM model on the Training set
 
-from sklearn.linear_model import LogisticRegression
+from sklearn.svm import SVC
 
-classifier = LogisticRegression(random_state=0)
+classifier = SVC(kernel="rbf", random_state=0)
 classifier.fit(X_train, y_train)
 
 ## Predicting a new result
@@ -89,7 +92,7 @@ for i, j in enumerate(np.unique(y_set)):
         c=ListedColormap(("red", "green"))(i),
         label=j,
     )
-plt.title("Logistic Regression (Training set)")
+plt.title("Kernel SVM (Training set)")
 plt.xlabel("Age")
 plt.ylabel("Estimated Salary")
 plt.legend()
@@ -122,7 +125,7 @@ for i, j in enumerate(np.unique(y_set)):
         c=ListedColormap(("red", "green"))(i),
         label=j,
     )
-plt.title("Logistic Regression (Test set)")
+plt.title("Kernel SVM (Test set)")
 plt.xlabel("Age")
 plt.ylabel("Estimated Salary")
 plt.legend()

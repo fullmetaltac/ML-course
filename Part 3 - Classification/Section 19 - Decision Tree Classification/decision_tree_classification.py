@@ -1,3 +1,6 @@
+## Importing the libraries
+
+
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -36,11 +39,11 @@ print(X_train)
 
 print(X_test)
 
-## Training the Logistic Regression model on the Training set
+## Training the Decision Tree Classification model on the Training set
 
-from sklearn.linear_model import LogisticRegression
+from sklearn.tree import DecisionTreeClassifier
 
-classifier = LogisticRegression(random_state=0)
+classifier = DecisionTreeClassifier(criterion="entropy", random_state=0)
 classifier.fit(X_train, y_train)
 
 ## Predicting a new result
@@ -89,7 +92,7 @@ for i, j in enumerate(np.unique(y_set)):
         c=ListedColormap(("red", "green"))(i),
         label=j,
     )
-plt.title("Logistic Regression (Training set)")
+plt.title("Decision Tree Classification (Training set)")
 plt.xlabel("Age")
 plt.ylabel("Estimated Salary")
 plt.legend()
@@ -122,7 +125,7 @@ for i, j in enumerate(np.unique(y_set)):
         c=ListedColormap(("red", "green"))(i),
         label=j,
     )
-plt.title("Logistic Regression (Test set)")
+plt.title("Decision Tree Classification (Test set)")
 plt.xlabel("Age")
 plt.ylabel("Estimated Salary")
 plt.legend()

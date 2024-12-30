@@ -1,3 +1,5 @@
+## Importing the libraries
+
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -36,11 +38,11 @@ print(X_train)
 
 print(X_test)
 
-## Training the Logistic Regression model on the Training set
+## Training the K-NN model on the Training set
 
-from sklearn.linear_model import LogisticRegression
+from sklearn.neighbors import KNeighborsClassifier
 
-classifier = LogisticRegression(random_state=0)
+classifier = KNeighborsClassifier(n_neighbors=5, metric="minkowski", p=2)
 classifier.fit(X_train, y_train)
 
 ## Predicting a new result
@@ -68,8 +70,8 @@ from matplotlib.colors import ListedColormap
 
 X_set, y_set = sc.inverse_transform(X_train), y_train
 X1, X2 = np.meshgrid(
-    np.arange(start=X_set[:, 0].min() - 10, stop=X_set[:, 0].max() + 10, step=0.25),
-    np.arange(start=X_set[:, 1].min() - 1000, stop=X_set[:, 1].max() + 1000, step=0.25),
+    np.arange(start=X_set[:, 0].min() - 10, stop=X_set[:, 0].max() + 10, step=1),
+    np.arange(start=X_set[:, 1].min() - 1000, stop=X_set[:, 1].max() + 1000, step=1),
 )
 plt.contourf(
     X1,
@@ -89,7 +91,7 @@ for i, j in enumerate(np.unique(y_set)):
         c=ListedColormap(("red", "green"))(i),
         label=j,
     )
-plt.title("Logistic Regression (Training set)")
+plt.title("K-NN (Training set)")
 plt.xlabel("Age")
 plt.ylabel("Estimated Salary")
 plt.legend()
@@ -101,8 +103,8 @@ from matplotlib.colors import ListedColormap
 
 X_set, y_set = sc.inverse_transform(X_test), y_test
 X1, X2 = np.meshgrid(
-    np.arange(start=X_set[:, 0].min() - 10, stop=X_set[:, 0].max() + 10, step=0.25),
-    np.arange(start=X_set[:, 1].min() - 1000, stop=X_set[:, 1].max() + 1000, step=0.25),
+    np.arange(start=X_set[:, 0].min() - 10, stop=X_set[:, 0].max() + 10, step=1),
+    np.arange(start=X_set[:, 1].min() - 1000, stop=X_set[:, 1].max() + 1000, step=1),
 )
 plt.contourf(
     X1,
@@ -122,7 +124,7 @@ for i, j in enumerate(np.unique(y_set)):
         c=ListedColormap(("red", "green"))(i),
         label=j,
     )
-plt.title("Logistic Regression (Test set)")
+plt.title("K-NN (Test set)")
 plt.xlabel("Age")
 plt.ylabel("Estimated Salary")
 plt.legend()
